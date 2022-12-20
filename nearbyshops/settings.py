@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'shops',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +55,7 @@ ROOT_URLCONF = 'nearbyshops.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,13 +74,13 @@ WSGI_APPLICATION = 'nearbyshops.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+   'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': env('POSTGRES_DB'),
-        'USER': env('POSTGRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': env('POSTGRES_HOST', default='127.0.0.1'),
-        'PORT': env('POSTGRES_PORT', default='5432')
+        'NAME': env("POSTGRES_DB"),
+        'USER': env("POSTGRES_USER"),
+        'PASSWORD': env("POSTGRES_PASSWORD"),
+        'HOST': env("POSTGRES_HOST", default='127.0.0.1'),
+        'PORT': env("POSTGRES_PORT", default='5432'),
     }
 }
 
@@ -120,3 +122,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ['https://singh-sumit-solid-space-doodle-vq4999g6wvqhpp9g-8000.preview.app.github.dev']
